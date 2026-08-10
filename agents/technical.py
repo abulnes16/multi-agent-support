@@ -1,22 +1,21 @@
-"""Agente de Soporte Técnico - sub-agente especializado en problemas técnicos."""
+"""Technical Support Agent - specialized sub-agent for technical issues."""
 
 from google.adk.agents import LlmAgent
-from tools.ticket import crear_ticket
+from tools.ticket import create_ticket
 
 
-AGENT_NAME = "soporte_tecnico"
+AGENT_NAME = "technical_support"
 AGENT_DESCRIPTION = (
-    "Agente especializado en soporte técnico de software. "
-    "Ayuda a resolver problemas técnicos como errores de código, "
-    "configuración, bugs, y cuestiones técnicas relacionadas con aplicaciones."
+    "Specialized technical support agent for software issues. "
+    "Helps resolve technical problems like code errors, "
+    "configuration, bugs, and application-related technical questions."
 )
 AGENT_INSTRUCTION = """Eres el agente de Soporte Técnico.
 
 Tu rol es ayudar al usuario con problemas técnicos:
 - Errores y bugs en aplicaciones
 - Problemas de configuración
-- Dudas sobre código
--安装 y setup
+- Dudas sobre código y setup
 - Problemas de rendimiento
 
 Instrucciones:
@@ -31,9 +30,9 @@ Cuando crees un ticket, usa:
 - prioridad: baja (consultas simples), media (problemas operativos), alta (sistema caído)"""
 
 
-agente_soporte_tecnico = LlmAgent(
+technical_support_agent = LlmAgent(
     name=AGENT_NAME,
     description=AGENT_DESCRIPTION,
     instruction=AGENT_INSTRUCTION,
-    tools=[crear_ticket],
+    tools=[create_ticket],
 )

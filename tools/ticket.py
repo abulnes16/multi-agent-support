@@ -1,22 +1,22 @@
-"""Tool para crear tickets de soporte."""
+"""Support ticket creation tool."""
 
 import uuid
 from typing import Any
 
 
-def crear_ticket(asunto: str, descripcion: str, prioridad: str = "media") -> dict[str, Any]:
-    """Crea un ticket de soporte en el sistema.
+def create_ticket(asunto: str, descripcion: str, prioridad: str = "media") -> dict[str, Any]:
+    """Creates a support ticket in the system.
 
     Args:
-        asunto: Titulo corto del problema.
-        descripcion: Descripcion detallada del problema.
-        prioridad: Nivel de prioridad del ticket (baja, media, alta).
+        asunto: Short title of the issue.
+        descripcion: Detailed description of the issue.
+        prioridad: Priority level (baja=low, media=medium, alta=high).
 
     Returns:
-        Dict con el ID del ticket creado y su estado.
+        Dict with the created ticket ID and status.
     """
     ticket_id = str(uuid.uuid4())[:8]
-    print(f"\n[TICKET CREADO] ID: {ticket_id}")
+    print(f"\n[TICKET CREATED] ID: {ticket_id}")
     print(f"  Asunto: {asunto}")
     print(f"  Prioridad: {prioridad}")
     print(f"  Descripcion: {descripcion[:100]}...")
@@ -27,3 +27,7 @@ def crear_ticket(asunto: str, descripcion: str, prioridad: str = "media") -> dic
         "prioridad": prioridad,
         "estado": "creado"
     }
+
+
+# Keep Spanish alias for compatibility with agent instructions
+crear_ticket = create_ticket

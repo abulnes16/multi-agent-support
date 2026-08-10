@@ -1,5 +1,5 @@
-"""Herramientas del sistema de soporte multi-agente."""
+"""Tools for the multi-agent support system."""
 
-from tools.ticket import crear_ticket
+from tools.ticket import create_ticket
 
-__all__ = ["crear_ticket"]
+__all__ = ["create_ticket"]

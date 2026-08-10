@@ -1,14 +1,14 @@
-"""Root agent que conecta todos los componentes del sistema multi-agente."""
+"""Root agent that connects all components of the multi-agent system."""
 
 from google.adk.agents import LlmAgent
-from agents.triage import agente_triaje
+from agents.triage import triage_agent
 from tools.ticket import crear_ticket
 
 
-ROOT_AGENT_NAME = "asistente_soporte"
+ROOT_AGENT_NAME = "support_assistant"
 ROOT_AGENT_DESCRIPTION = (
-    "Asistente principal de soporte que recibe consultas de usuarios "
-    "y las enruta a agentes especializados en técnico o facturación."
+    "Main support assistant that receives user queries "
+    "and routes them to specialized agents (technical or billing)."
 )
 ROOT_AGENT_INSTRUCTION = """Eres el asistente principal de soporte.
 
@@ -24,11 +24,11 @@ Dispones de:
 Siempre responde en español de manera profesional."""
 
 
-# Root agent que usa el agente de triaje como sub-agent
+# Root agent using triage agent as sub-agent
 root_agent = LlmAgent(
     name=ROOT_AGENT_NAME,
     description=ROOT_AGENT_DESCRIPTION,
     instruction=ROOT_AGENT_INSTRUCTION,
-    sub_agents=[agente_triaje],
+    sub_agents=[triage_agent],
     tools=[crear_ticket],
 )

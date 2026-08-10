@@ -1,14 +1,14 @@
-"""Agente de Facturación - sub-agente especializado en temas de facturación."""
+"""Billing Agent - specialized sub-agent for billing and payment topics."""
 
 from google.adk.agents import LlmAgent
 from tools.ticket import crear_ticket
 
 
-AGENT_NAME = "facturacion"
+AGENT_NAME = "billing_support"
 AGENT_DESCRIPTION = (
-    "Agente especializado en facturación y pagos. "
-    "Ayuda con consultas sobre facturas, métodos de pago, "
-    "suscripciones, cobros y estados de cuenta."
+    "Specialized billing and payments agent. "
+    "Handles inquiries about invoices, payment methods, "
+    "subscriptions, charges, and account statements."
 )
 AGENT_INSTRUCTION = """Eres el agente de Facturación.
 
@@ -32,7 +32,7 @@ Cuando crees un ticket, usa:
 - prioridad: baja (consulta), media (problema de pago), alta (urgente)"""
 
 
-agente_facturacion = LlmAgent(
+billing_support_agent = LlmAgent(
     name=AGENT_NAME,
     description=AGENT_DESCRIPTION,
     instruction=AGENT_INSTRUCTION,

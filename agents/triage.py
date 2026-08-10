@@ -1,14 +1,14 @@
-"""Agente de Triaje y Filtro - root agent que enruta al agente apropiado."""
+"""Triage and Filter Agent - root agent that routes to the appropriate specialized agent."""
 
 from google.adk.agents import LlmAgent
-from agents.technical import agente_soporte_tecnico
-from agents.billing import agente_facturacion
+from agents.technical import technical_support_agent
+from agents.billing import billing_support_agent
 
 
-AGENT_NAME = "triaje"
+AGENT_NAME = "triage_agent"
 AGENT_DESCRIPTION = (
-    "Agente de triaje para soporte. Recibe la consulta del usuario "
-    "y la enruta al agente especializado apropiado (técnico o facturación)."
+    "Triage agent for support. Receives user query "
+    "and routes to the appropriate specialized agent (technical or billing)."
 )
 AGENT_INSTRUCTION = """Eres el agente de Triaje y Filtro.
 
@@ -19,7 +19,7 @@ Agentes disponibles:
 2. facturacion - Para temas de facturas, pagos, cobros, suscripciones, precios
 
 Palabras clave para identificar el agente correcto:
-- soporte_tecnico: error, bug, код, configuración, instalar, ejecutar, 
+- soporte_tecnico: error, bug, configuración, instalar, ejecutar, 
   no funciona, problema técnico, aplikasi, sitio web, login, acceso,
   rendimiento, lento, crash, exception
 - facturacion: factura, pagar, pago, cobros, suscripción, precio, 
@@ -45,7 +45,9 @@ agente_triaje = LlmAgent(
     description=AGENT_DESCRIPTION,
     instruction=AGENT_INSTRUCTION,
     sub_agents=[
-        agente_soporte_tecnico,
-        agente_facturacion,
+        technical_support_agent,
+        billing_support_agent,
     ],
 )
+
+triage_agent = agente_triaje  # Export for compatibility
