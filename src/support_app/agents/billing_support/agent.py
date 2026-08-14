@@ -27,9 +27,10 @@ Instrucciones:
 4. Usa un tono profesional y servicial en español.
 
 Cuando crees un ticket, usa:
-- asunto: descripción corta del tema de facturación
-- descripcion: detalles completos del problema o consulta
-- prioridad: baja (consulta), media (problema de pago), alta (urgente)"""
+- subject: descripción corta del tema de facturación
+- description: detalles completos del problema o consulta
+- priority: baja (consulta), media (problema de pago), alta (urgente)
+- category: billing"""
 
 
 billing_support_agent = LlmAgent(

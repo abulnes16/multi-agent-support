@@ -25,9 +25,10 @@ Instrucciones:
 4. Usa un tono amigable y profesional en español.
 
 Cuando crees un ticket, usa:
-- asunto: descripción corta del problema
-- descripcion: detalles completos del problema
-- prioridad: baja (consultas simples), media (problemas operativos), alta (sistema caído)"""
+- subject: descripción corta del problema
+- description: detalles completos del problema
+- priority: baja (consultas simples), media (problemas operativos), alta (sistema caído)
+- category: technical"""
 
 
 technical_support_agent = LlmAgent(
