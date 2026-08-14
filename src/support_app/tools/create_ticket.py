@@ -27,7 +27,3 @@ def create_ticket(asunto: str, descripcion: str, prioridad: str = "media") -> di
         "prioridad": prioridad,
         "estado": "creado"
     }
-
-
-# Keep Spanish alias for compatibility with agent instructions
-crear_ticket = create_ticket

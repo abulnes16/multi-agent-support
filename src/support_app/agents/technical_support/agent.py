@@ -1,7 +1,7 @@
 """Technical Support Agent - specialized sub-agent for technical issues."""
 
 from google.adk.agents import LlmAgent
-from tools.ticket import create_ticket
+from ...tools.create_ticket import create_ticket
 
 
 AGENT_NAME = "technical_support"
@@ -36,3 +36,6 @@ technical_support_agent = LlmAgent(
     instruction=AGENT_INSTRUCTION,
     tools=[create_ticket],
 )
+
+agent = technical_support_agent
+root_agent = technical_support_agent

@@ -1,8 +1,8 @@
 """Root agent that connects all components of the multi-agent system."""
 
 from google.adk.agents import LlmAgent
-from agents.triage import triage_agent
-from tools.ticket import crear_ticket
+from .triage_agent.agent import triage_agent
+from ..tools.create_ticket import create_ticket
 
 
 ROOT_AGENT_NAME = "support_assistant"
@@ -23,12 +23,12 @@ Dispones de:
 
 Siempre responde en español de manera profesional."""
 
-
-# Root agent using triage agent as sub-agent
 root_agent = LlmAgent(
     name=ROOT_AGENT_NAME,
     description=ROOT_AGENT_DESCRIPTION,
     instruction=ROOT_AGENT_INSTRUCTION,
     sub_agents=[triage_agent],
-    tools=[crear_ticket],
+    tools=[create_ticket],
 )
+
+agent = root_agent

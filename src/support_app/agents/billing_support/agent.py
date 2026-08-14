@@ -1,7 +1,7 @@
 """Billing Agent - specialized sub-agent for billing and payment topics."""
 
 from google.adk.agents import LlmAgent
-from tools.ticket import crear_ticket
+from ...tools.create_ticket import create_ticket
 
 
 AGENT_NAME = "billing_support"
@@ -36,5 +36,8 @@ billing_support_agent = LlmAgent(
     name=AGENT_NAME,
     description=AGENT_DESCRIPTION,
     instruction=AGENT_INSTRUCTION,
-    tools=[crear_ticket],
+    tools=[create_ticket],
 )
+
+agent = billing_support_agent
+root_agent = billing_support_agent
