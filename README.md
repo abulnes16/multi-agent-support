@@ -59,7 +59,6 @@ source .venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
-pip install requests gspread google-auth python-dotenv
 ```
 
 *(Note: ensure `google.adk` and its dependencies are also properly installed).*
