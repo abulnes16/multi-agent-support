@@ -4,8 +4,10 @@ from google.adk.agents import LlmAgent
 from ..technical_support.agent import technical_support_agent
 from ..billing_support.agent import billing_support_agent
 from ...tools.create_ticket import create_ticket
+from google.adk.models import Gemini
+from google.genai import types
 
-
+MODEL_NAME = "gemini-flash-latest"
 AGENT_NAME = "triage_agent"
 AGENT_DESCRIPTION = (
     "Triage agent for support. Receives user query "
@@ -42,6 +44,13 @@ Responde siempre en español de manera amable."""
 
 triage_agent = LlmAgent(
     name=AGENT_NAME,
+    model=Gemini(
+      model=MODEL_NAME, 
+      retry_options=types.HttpRetryOptions(
+          attempts=5, 
+          initial_delay=1
+        )
+      ),
     description=AGENT_DESCRIPTION,
     instruction=AGENT_INSTRUCTION,
     sub_agents=[

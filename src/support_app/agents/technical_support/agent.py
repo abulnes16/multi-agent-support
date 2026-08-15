@@ -2,8 +2,10 @@
 
 from google.adk.agents import LlmAgent
 from ...tools.create_ticket import create_ticket
+from google.adk.models import Gemini
+from google.genai import types
 
-
+MODEL_NAME = "gemini-flash-latest"
 AGENT_NAME = "technical_support"
 AGENT_DESCRIPTION = (
     "Specialized technical support agent for software issues. "
@@ -33,6 +35,13 @@ Cuando crees un ticket, usa:
 
 technical_support_agent = LlmAgent(
     name=AGENT_NAME,
+    model=Gemini(
+      model=MODEL_NAME, 
+      retry_options=types.HttpRetryOptions(
+          attempts=5, 
+          initial_delay=1
+        )
+      ),
     description=AGENT_DESCRIPTION,
     instruction=AGENT_INSTRUCTION,
     tools=[create_ticket],
